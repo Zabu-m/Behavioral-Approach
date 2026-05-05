@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Generational Differences Millennials vs Generation X</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script><link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet"/><style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #FDFBF7;
+    font-family: "Open Sans", sans-serif;
+    color: #2C2C2C}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    background-color: #FDFBF7;
+    position: relative;
+    display: flex;
+    flex-direction: column
+    }
+/* Title Region - Strictly following <DESIGN> Section 7 */
+.title-section-container {
+    margin: 30px;
+    padding: 20px;
+    background-color: #F2EFE9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 6px solid #8E4417
+    }
+.title-main-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #2C2C2C;
+    line-height: 1.2;
+    text-transform: uppercase
+    }
+.title-subtitle-text {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #8E4417;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px
+    }
+/* Layout Columns */
+.generation-comparison-wrapper {
+    display: flex;
+    flex: 1;
+    padding: 0 30px 20px 30px;
+    gap: 20px;
+    align-items: stretch
+    }
+.generation-profile-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+.chart-visualization-column {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+    }
+/* Cards */
+.generation-data-card {
+    background-color: #F2EFE9;
+    padding: 25px;
+    border-radius: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid transparent
+    }
+.millennial-accent {
+    border-top-color: #8E4417
+    }
+.genx-accent {
+    border-top-color: #4A6741
+    }
+.card-header-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 12px
+    }
+.card-header-icon {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #FFF
+    }
+.millennial-icon {
+    color: #8E4417
+    }
+.genx-icon {
+    color: #4A6741
+    }
+.card-title-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #2C2C2C
+    }
+.card-content-list {
+    list-style: none
+    }
+.card-list-item {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.4
+    }
+.card-list-item i {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #8E4417
+    }
+.orientation-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase
+    }
+.task-badge {
+    background-color: #8E4417;
+    color: #FFF
+    }
+.rel-badge {
+    background-color: #4A6741;
+    color: #FFF
+    }
+/* Chart Container */
+.leadership-metric-chart {
+    height: 380px;
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05)
+    }
+/* Footer Insight */
+.strategic-implication-footer {
+    margin: 0 30px 30px 30px;
+    padding: 15px 25px;
+    background-color: #2C2C2C;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px
+    }
+.footer-insight-icon {
+    color: #FDFBF7;
+    font-size: 20px
+    }
+.footer-insight-text {
+    color: #FDFBF7;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5
+    }
+.footer-insight-highlight {
+    color: #F2EFE9;
+    font-weight: 600
+    }
+html { overflow: hidden; }
+</style>
+</head>
+<body>
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Section -->
+<div class="title-section-container">
+<div class="title-main-text">GENERATIONAL DIFFERENCES MILLENNIALS VS GENERATION X</div>
+<div class="title-subtitle-text">UAE Digital Transformation Context | Farhan et al. (2024)</div>
+</div>
+<!-- Main Content Layout -->
+<div class="generation-comparison-wrapper">
+<!-- Millennial Column -->
+<div class="generation-profile-column">
+<div class="generation-data-card millennial-accent">
+<div class="card-header-flex">
+<div class="card-header-icon millennial-icon">
+<i class="fas fa-laptop-code"></i>
+</div>
+<div class="card-title-text">Millennials (30–39 yrs)</div>
+</div>
+<div class="orientation-badge task-badge">Primary: Task Orientation</div>
+<ul class="card-content-list">
+<li class="card-list-item">
+<i class="fas fa-circle"></i>
+<span>Significantly higher task focus (Mean Rank: 263.50).</span>
+</li>
+<li class="card-list-item">
+<i class="fas fa-circle"></i>
+<span>Digitally native and tech-savvy orientation.</span>
+</li>
+<li class="card-list-item">
+<i class="fas fa-circle"></i>
+<span>Efficient at managing remote workflows through structured digital tools.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Chart Column -->
+<div class="chart-visualization-column">
+<div class="leadership-metric-chart" id="metric-chart"></div>
+<div style="margin-top: 10px; font-size: 11px; color: #666; text-align: center; font-style: italic;">
+                    * 20–29 years group serves as the study baseline.
+                </div>
+</div>
+<!-- Gen-X Column -->
+<div class="generation-profile-column">
+<div class="generation-data-card genx-accent">
+<div class="card-header-flex">
+<div class="card-header-icon genx-icon">
+<i class="fas fa-handshake"></i>
+</div>
+<div class="card-title-text">Gen-X (40+ yrs)</div>
+</div>
+<div class="orientation-badge rel-badge">Primary: Relationship Orientation</div>
+<ul class="card-content-list">
+<li class="card-list-item">
+<i class="fas fa-circle"></i>
+<span>Significantly higher relationship focus (Mean Rank: 259.94).</span>
+</li>
+<li class="card-list-item">
+<i class="fas fa-circle"></i>
+<span>Prioritize personal bonds and psychological safety.</span>
+</li>
+<li class="card-list-item">
+<i class="fas fa-circle"></i>
+<span>Leverage relational behaviors to sustain performance in remote environments.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Insight Footer -->
+<div class="strategic-implication-footer">
+<div class="footer-insight-icon"><i class="fas fa-lightbulb"></i></div>
+<div class="footer-insight-text">
+<span class="footer-insight-highlight">Strategic Insight:</span> Seniority is not the sole criterion for digital success. Organizations benefit from the task fluency of Millennials and the relational depth of Gen-X to achieve full behavioral integration.
+            </div>
+</div>
+</div>
+<script>
+        const chartDom = document.getElementById('metric-chart');
+        const myChart = echarts.init(chartDom);
+        const option = {
+            title: {
+                text: 'Leadership Orientation Mean Rank Comparison',
+                left: 'center',
+                textStyle: {
+                    fontFamily: 'Montserrat',
+                    fontSize: 14,
+                    color: '#2C2C2C'
+                },
+                top: 10
+            },
+            tooltip: {
+                show: false
+            },
+            legend: {
+                bottom: 10,
+                icon: 'circle',
+                textStyle: {
+                    fontFamily: 'Open Sans',
+                    fontSize: 10
+                }
+            },
+            grid: {
+                left: '5%',
+                right: '5%',
+                bottom: '15%',
+                top: '20%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                data: ['Millennials (30-39)', 'Gen-X (40+)'],
+                axisLabel: {
+                    fontFamily: 'Open Sans',
+                    fontSize: 10,
+                    fontWeight: 600
+                },
+                axisLine: {
+                    lineStyle: { color: '#DDD' }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                max: 300,
+                axisLabel: {
+                    fontFamily: 'Open Sans',
+                    fontSize: 10
+                },
+                splitLine: {
+                    lineStyle: { type: 'dashed', color: '#EEE' }
+                }
+            },
+            series: [
+                {
+                    name: 'Task Orientation',
+                    type: 'bar',
+                    data: [263.5, 225.3],
+                    itemStyle: { color: '#8E4417' },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        fontSize: 8,
+                        fontFamily: 'Open Sans',
+                        color: '#2C2C2C'
+                    },
+                    barWidth: '35%'
+                },
+                {
+                    name: 'Relationship Orientation',
+                    type: 'bar',
+                    data: [228.5, 259.9],
+                    itemStyle: { color: '#4A6741' },
+                    label: {
+                        show: true,
+                        position: 'top',
+                        fontSize: 8,
+                        fontFamily: 'Open Sans',
+                        color: '#2C2C2C'
+                    },
+                    barWidth: '35%'
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

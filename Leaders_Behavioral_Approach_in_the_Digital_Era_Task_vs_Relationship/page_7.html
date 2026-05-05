@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Top Scoring Task and Relationship Behaviours</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;family=Open+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script><link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet"/><style>* {
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box
+    }
+body {width: 1280px; height: 720px; overflow: hidden; background-color: #FDFBF7;
+    font-family: "Open Sans", "Arial", sans-serif;
+    color: #2C2C2C;
+    display: flex;
+    justify-content: center;
+    align-items: center}
+.slide-root-container {
+    width: 1280px;
+    height: 720px;
+    background-color: #FDFBF7;
+    display: flex;
+    flex-direction: column
+    }
+/* Non-Cover-Page Title Region */
+.title-section-wrapper {
+    margin: 24px 30px;
+    padding: 16px 20px;
+    background-color: #F2EFE9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 6px solid #8E4417
+    }
+.title-main-heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #2C2C2C;
+    line-height: 1.2;
+    text-transform: uppercase
+    }
+.title-sub-heading {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #8E4417;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px
+    }
+/* Main Content Layout */
+.content-main-layout {
+    display: flex;
+    flex: 1;
+    margin: 0 30px 16px 30px;
+    gap: 16px 20px;
+    align-items: stretch
+    }
+.right-relationship-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column
+    }
+.left-task-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column
+    }
+/* Category Header */
+.category-header-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px
+    }
+.task-header {
+    background-color: #8E4417;
+    color: #FFF
+    }
+.relationship-header {
+    background-color: #4A6741;
+    color: #FFF
+    }
+.category-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px
+    }
+/* Behaviour Cards */
+.behaviour-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1
+    }
+.behaviour-item-card {
+    background-color: #F2EFE9;
+    padding: 14px 18px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid transparent;
+    list-style: none
+    }
+.task-item-card {
+    border-left-color: #8E4417
+    }
+.relationship-item-card {
+    border-left-color: #4A6741
+    }
+.behaviour-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px
+    }
+.behaviour-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8E4417;
+    text-transform: uppercase
+    }
+.relationship-label {
+    color: #4A6741
+    }
+.behaviour-description {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2C2C2C
+    }
+.score-badge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 80px
+    }
+.score-value {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #2C2C2C
+    }
+.score-label {
+    font-size: 10px;
+    color: #666;
+    text-transform: uppercase
+    }
+/* Bottom Insight Note */
+.bottom-insight-bar {
+    margin: 0 30px 24px 30px;
+    padding: 12px 25px;
+    background-color: rgba(74, 103, 65, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px 20px;
+    border: 1px dashed #4A6741
+    }
+.insight-icon-box {
+    font-size: 24px;
+    color: #4A6741
+    }
+.insight-text-content {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333
+    }
+.insight-highlight {
+    font-weight: 700;
+    color: #4A6741
+    }
+html { overflow: hidden; }
+</style>
+</head>
+<body>
+<div class="slide-root-container" style="overflow: hidden;">
+<!-- Title Region -->
+<div class="title-section-wrapper">
+<div class="title-main-heading">
+                Top Scoring Task and Relationship Behaviours
+            </div>
+<div class="title-sub-heading">
+                UAE Digital Transformation Context | Farhan et al. (2024)
+            </div>
+</div>
+<!-- Main Content -->
+<div class="content-main-layout">
+<!-- Left Column: Task-Oriented -->
+<div class="left-task-column">
+<div class="category-header-box task-header">
+<i class="fa-solid fa-circle-question"></i>
+<div class="category-title">Task-Oriented Priorities</div>
+</div>
+<div class="behaviour-list-wrapper">
+<div class="behaviour-item-card task-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label">T10 Behaviour</span>
+<span class="behaviour-description">Encourages group members to do high-quality work</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.102</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card task-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label">T3 Behaviour</span>
+<span class="behaviour-description">Makes suggestions about how to solve problems</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.073</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card task-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label">T5 Behaviour</span>
+<span class="behaviour-description">Develops a plan of action for the group</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">3.966</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card task-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label">T8 Behaviour</span>
+<span class="behaviour-description">Provides a plan for how work is to be done</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">3.958</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card task-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label">T9 Behaviour</span>
+<span class="behaviour-description">Provides criteria for what is expected</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">3.955</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Relationship-Oriented -->
+<div class="right-relationship-column">
+<div class="category-header-box relationship-header">
+<i class="fas fa-heart"></i>
+<div class="category-title">Relationship-Oriented Priorities</div>
+</div>
+<div class="behaviour-list-wrapper">
+<div class="behaviour-item-card relationship-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label relationship-label">R2 Behaviour</span>
+<span class="behaviour-description">Helps others in the group feel comfortable</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.212</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card relationship-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label relationship-label">R1 Behaviour</span>
+<span class="behaviour-description">Acts friendly with members of the group</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.176</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card relationship-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label relationship-label">R4 Behaviour</span>
+<span class="behaviour-description">Treats others fairly</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.105</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card relationship-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label relationship-label">R6 Behaviour</span>
+<span class="behaviour-description">Communicates actively with group members</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.090</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+<div class="behaviour-item-card relationship-item-card">
+<div class="behaviour-text-group">
+<span class="behaviour-label relationship-label">R10 Behaviour</span>
+<span class="behaviour-description">Helps group members get along</span>
+</div>
+<div class="score-badge-container">
+<span class="score-value">4.058</span>
+<span class="score-label">Mean Score</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insight Footer -->
+<div class="bottom-insight-bar">
+<div class="insight-icon-box">
+<i class="fa-solid fa-shield"></i>
+</div>
+<div class="insight-text-content">
+<span class="insight-highlight">Key Insight:</span> The highest relationship scores relate to creating <span class="insight-highlight">Psychological Safety</span> (comfort, friendliness, fairness). These are critical behaviours for maintaining connection in remote environments where isolation and drift are high risks.
+            </div>
+</div>
+</div>
+</body>
+</html>
