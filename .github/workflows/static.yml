@@ -33,6 +33,28 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Download images
+        run: |
+          mkdir -p Leaders_Behavioral_Approach_in_the_Digital_Era_Task_vs_Relationship/images
+          declare -A IMAGES=(
+            ["5058f66dffa95cc10bed53d839709e53.png"]="https://agents-download.skywork.ai/image/ppt/7456777204488380417/5058f66dffa95cc10bed53d839709e53.png"
+            ["c61883c8252bce72691995040522b825.jpg"]="https://agents-download.skywork.ai/image/rt/c61883c8252bce72691995040522b825.jpg"
+            ["cropped_image_10_1777834106065484445.jpg"]="https://static-us-img.skywork.ai/prod/nexus/1777834106/cropped_image_10_1777834106065484445.jpg"
+            ["cropped_image_4_1777834105389294374.jpg"]="https://static-us-img.skywork.ai/prod/nexus/1777834105/cropped_image_4_1777834105389294374.jpg"
+            ["cropped_image_6_1777834105020285501.jpg"]="https://static-us-img.skywork.ai/prod/nexus/1777834105/cropped_image_6_1777834105020285501.jpg"
+            ["cropped_image_0_1777834106721222701.jpg"]="https://static-us-img.skywork.ai/prod/nexus/1777834106/cropped_image_0_1777834106721222701.jpg"
+            ["cropped_image_0_1777834106590383344.jpg"]="https://static-us-img.skywork.ai/prod/nexus/1777834106/cropped_image_0_1777834106590383344.jpg"
+            ["428334e517c6689fac45060a780920a8.jpg"]="https://agents-download.skywork.ai/image/rt/428334e517c6689fac45060a780920a8.jpg"
+          )
+          for filename in "${!IMAGES[@]}"; do
+            url="${IMAGES[$filename]}"
+            dest="Leaders_Behavioral_Approach_in_the_Digital_Era_Task_vs_Relationship/images/$filename"
+            curl -L --retry 3 -m 30 -o "$dest" "$url" -s \
+              -H "Referer: https://www.skywork.ai/" \
+              -H "User-Agent: Mozilla/5.0 (compatible; GitHubPages/1.0)" \
+              && echo "Downloaded $filename" \
+              || echo "Warning: Could not download $filename"
+          done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
