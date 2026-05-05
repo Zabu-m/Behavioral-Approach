@@ -166,9 +166,7 @@ def generate_index():
         function handleMousedown(e) {{
             if (isControlInteraction(e.target)) return;
 
-            if (e.button === 0) {{ 
-                handleTapNavigation(e.target, e.clientX);
-            }} else if (e.button === 2) {{ 
+            if (e.button === 2) {{ 
                 prevSlide();
             }}
         }}
