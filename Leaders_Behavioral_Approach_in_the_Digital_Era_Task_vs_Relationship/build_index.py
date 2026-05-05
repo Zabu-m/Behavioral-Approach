@@ -204,7 +204,7 @@ def generate_index():
                 }}
                 lastTouchTime = Date.now();
                 e.preventDefault();
-            }} else if (absX < tapThreshold && Math.abs(deltaY) < tapThreshold) {{
+            }} else if (absX < tapThreshold && absY < tapThreshold) {{
                 handleTapNavigation(e.target, touch.clientX);
                 lastTouchTime = Date.now();
                 e.preventDefault();
