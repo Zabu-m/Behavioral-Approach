@@ -11,7 +11,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #222; /* Sunum için daha hoş duracak koyu bir arkaplan */
+            background-color: #222;
         }
         #slideContainer {
             position: absolute;
@@ -19,11 +19,9 @@
             left: 50%;
             width: 1280px;
             height: 720px;
-            /* Tam merkeze yerleştirmek için genişlik ve yüksekliğin yarısı kadar geri çekiyoruz */
             margin-left: -640px; 
             margin-top: -360px;
             transform-origin: center center;
-            /* transform: scale(...) JavaScript tarafından hesaplanıp eklenecek */
         }
         iframe {
             width: 100%;
@@ -80,7 +78,6 @@
     <div id="slideContainer">
         <iframe id="slideFrame" src="page_1.html"></iframe>
     </div>
-    <!-- Tıklamaları iframe yerine yakalamak için görünmez katman -->
     <div id="clickOverlay"></div>
     <div id="controls">
         <button id="fullscreenBtn" title="Tam Ekran">⛶ Tam Ekran</button>
@@ -94,16 +91,17 @@
         var slideIndicator = document.getElementById("currentSlide");
         var fullscreenBtn = document.getElementById("fullscreenBtn");
         var slideContainer = document.getElementById("slideContainer");
+        var clickOverlay = document.getElementById("clickOverlay");
+        var touchStartX = null;
+        var touchStartY = null;
+        var lastTouchTime = 0;
 
-        // Ekran boyutuna göre slaytları otomatik büyütüp/küçülten (ölçeklendiren) fonksiyon
         function resizeContainer() {
             var scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
             slideContainer.style.transform = "scale(" + scale + ")";
         }
 
-        // Ekran boyutu değiştiğinde hesapla
         window.addEventListener('resize', resizeContainer);
-        // İlk açılışta hemen hesapla
         resizeContainer();
 
         function updateSlide(newSlide) {
@@ -126,6 +124,20 @@
             }
         }
 
+        function isControlInteraction(target) {
+            return target.closest && target.closest("#controls");
+        }
+
+        function handleTapNavigation(target, clientX) {
+            if (isControlInteraction(target)) return;
+            var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            if (clientX < viewportWidth * 0.35) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        }
+
         function handleKeydown(e) {
             if (e.code === "Space" || e.code === "ArrowRight" || e.code === "ArrowDown" || e.code === "PageDown") {
                 e.preventDefault();
@@ -137,14 +149,54 @@
         }
 
         function handleMousedown(e) {
-            // Sağ alt köşedeki kontrol paneline tıklandıysa slayt geçişi yapma
-            if (e.target.closest && e.target.closest("#controls")) return;
-            
+            if (isControlInteraction(e.target)) return;
+
             if (e.button === 0) { 
-                nextSlide();
+                handleTapNavigation(e.target, e.clientX);
             } else if (e.button === 2) { 
                 prevSlide();
             }
+        }
+
+        function handleClick(e) {
+            if (Date.now() - lastTouchTime < 500) return;
+            handleTapNavigation(e.target, e.clientX);
+        }
+
+        function handleTouchstart(e) {
+            if (isControlInteraction(e.target) || e.touches.length !== 1) return;
+            var touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }
+
+        function handleTouchend(e) {
+            if (touchStartX === null || touchStartY === null || e.changedTouches.length === 0) return;
+
+            var touch = e.changedTouches[0];
+            var deltaX = touch.clientX - touchStartX;
+            var deltaY = touch.clientY - touchStartY;
+            var absX = Math.abs(deltaX);
+            var absY = Math.abs(deltaY);
+            var swipeThreshold = 35;
+            var tapThreshold = 10;
+
+            if (absX > swipeThreshold && absX > absY) {
+                if (deltaX < 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+                lastTouchTime = Date.now();
+                e.preventDefault();
+            } else if (absX < tapThreshold && Math.abs(deltaY) < tapThreshold) {
+                handleTapNavigation(e.target, touch.clientX);
+                lastTouchTime = Date.now();
+                e.preventDefault();
+            }
+
+            touchStartX = null;
+            touchStartY = null;
         }
 
         function handleContextmenu(e) {
@@ -164,7 +216,10 @@
         });
 
         window.addEventListener("keydown", handleKeydown);
-        window.addEventListener("mousedown", handleMousedown);
+        clickOverlay.addEventListener("mousedown", handleMousedown);
+        clickOverlay.addEventListener("click", handleClick);
+        clickOverlay.addEventListener("touchstart", handleTouchstart, { passive: true });
+        clickOverlay.addEventListener("touchend", handleTouchend, { passive: false });
         window.addEventListener("contextmenu", handleContextmenu);
         
     </script>

@@ -106,6 +106,10 @@ def generate_index():
         var slideIndicator = document.getElementById("currentSlide");
         var fullscreenBtn = document.getElementById("fullscreenBtn");
         var slideContainer = document.getElementById("slideContainer");
+        var clickOverlay = document.getElementById("clickOverlay");
+        var touchStartX = null;
+        var touchStartY = null;
+        var lastTouchTime = 0;
 
         function resizeContainer() {{
             var scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
@@ -135,6 +139,20 @@ def generate_index():
             }}
         }}
 
+        function isControlInteraction(target) {{
+            return target.closest && target.closest("#controls");
+        }}
+
+        function handleTapNavigation(target, clientX) {{
+            if (isControlInteraction(target)) return;
+            var viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+            if (clientX < viewportWidth * 0.35) {{
+                prevSlide();
+            }} else {{
+                nextSlide();
+            }}
+        }}
+
         function handleKeydown(e) {{
             if (e.code === "Space" || e.code === "ArrowRight" || e.code === "ArrowDown" || e.code === "PageDown") {{
                 e.preventDefault();
@@ -146,13 +164,54 @@ def generate_index():
         }}
 
         function handleMousedown(e) {{
-            if (e.target.closest && e.target.closest("#controls")) return;
-            
+            if (isControlInteraction(e.target)) return;
+
             if (e.button === 0) {{ 
-                nextSlide();
+                handleTapNavigation(e.target, e.clientX);
             }} else if (e.button === 2) {{ 
                 prevSlide();
             }}
+        }}
+
+        function handleClick(e) {{
+            if (Date.now() - lastTouchTime < 500) return;
+            handleTapNavigation(e.target, e.clientX);
+        }}
+
+        function handleTouchstart(e) {{
+            if (isControlInteraction(e.target) || e.touches.length !== 1) return;
+            var touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }}
+
+        function handleTouchend(e) {{
+            if (touchStartX === null || touchStartY === null || e.changedTouches.length === 0) return;
+
+            var touch = e.changedTouches[0];
+            var deltaX = touch.clientX - touchStartX;
+            var deltaY = touch.clientY - touchStartY;
+            var absX = Math.abs(deltaX);
+            var absY = Math.abs(deltaY);
+            var swipeThreshold = 35;
+            var tapThreshold = 10;
+
+            if (absX > swipeThreshold && absX > absY) {{
+                if (deltaX < 0) {{
+                    nextSlide();
+                }} else {{
+                    prevSlide();
+                }}
+                lastTouchTime = Date.now();
+                e.preventDefault();
+            }} else if (absX < tapThreshold && Math.abs(deltaY) < tapThreshold) {{
+                handleTapNavigation(e.target, touch.clientX);
+                lastTouchTime = Date.now();
+                e.preventDefault();
+            }}
+
+            touchStartX = null;
+            touchStartY = null;
         }}
 
         function handleContextmenu(e) {{
@@ -172,7 +231,10 @@ def generate_index():
         }});
 
         window.addEventListener("keydown", handleKeydown);
-        window.addEventListener("mousedown", handleMousedown);
+        clickOverlay.addEventListener("mousedown", handleMousedown);
+        clickOverlay.addEventListener("click", handleClick);
+        clickOverlay.addEventListener("touchstart", handleTouchstart, {{ passive: true }});
+        clickOverlay.addEventListener("touchend", handleTouchend, {{ passive: false }});
         window.addEventListener("contextmenu", handleContextmenu);
         
     </script>
