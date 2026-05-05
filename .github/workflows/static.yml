@@ -49,11 +49,13 @@ jobs:
           for filename in "${!IMAGES[@]}"; do
             url="${IMAGES[$filename]}"
             dest="Leaders_Behavioral_Approach_in_the_Digital_Era_Task_vs_Relationship/images/$filename"
-            curl -L --retry 3 -m 30 -o "$dest" "$url" -s \
+            if curl -L --retry 3 -m 30 -o "$dest" "$url" \
               -H "Referer: https://www.skywork.ai/" \
-              -H "User-Agent: Mozilla/5.0 (compatible; GitHubPages/1.0)" \
-              && echo "Downloaded $filename" \
-              || echo "Warning: Could not download $filename"
+              -H "User-Agent: Mozilla/5.0 (compatible; GitHubPages/1.0)"; then
+              echo "Downloaded $filename"
+            else
+              echo "Warning: Could not download $filename from $url"
+            fi
           done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
